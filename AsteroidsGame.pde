@@ -1,4 +1,4 @@
-//your variable declarations here
+Spaceship ship = new Spaceship(); //your variable declarations here
 public void setup() 
 {
   //your code here
@@ -7,4 +7,3 @@ public void draw()
 {
   //your code here
 }
-
