@@ -20,12 +20,12 @@ public void draw()
     nightSky[i].show();
   }
   ship.show();
-  //ship.move();
+  ship.move();
   public void keyPressed()
   {
     if (key == 'a')
     {
-      ship.setX(Math.random()*400);
+      ship.setX((int)Math.random()*400);
     }
   }
 }
