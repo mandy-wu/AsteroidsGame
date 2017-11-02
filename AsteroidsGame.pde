@@ -21,11 +21,31 @@ public void draw()
   }
   ship.show();
   ship.move();
-  public void keyPressed()
+}
+public void keyPressed()
   {
     if (key == 'a')
     {
-      ship.setX((int)Math.random()*400);
+      ship.turn(15);
     }
-  }
+    if (key == 'd')
+    {
+      ship.turn (-15);
+    }
+    if (key == 'w')
+    {
+      ship.accelerate(2);
+    }
+    if (key == 's')
+    {
+      ship.accelerate(-2);
+    }
+    if (key == ' ' )
+    {
+      ship.setX((int)(Math.random()*500));
+      ship.setY((int)(Math.random()*500));
+      ship.setPointDirection((int)(Math.random()*360));
+      ship.setDirectionX(0);
+      ship.setDirectionY(0);
+    }
 }
