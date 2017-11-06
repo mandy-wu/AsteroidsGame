@@ -26,11 +26,11 @@ public void keyPressed()
   {
     if (key == 'a')
     {
-      ship.turn(15);
+      ship.turn(-15);
     }
     if (key == 'd')
     {
-      ship.turn (-15);
+      ship.turn (15);
     }
     if (key == 'w')
     {
