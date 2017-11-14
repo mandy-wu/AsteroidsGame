@@ -1,10 +1,15 @@
 Spaceship ship; //your variable declarations here
+Asteroid [] rock = new Asteroid [25];
 Stars [] nightSky = new Stars [200];
 public void setup() 
 {
   //your code here
   size (500,500);
   ship = new Spaceship();
+  for (int i = 0; i < rock.length; i++)
+  {
+    rock[i] = new Asteroid();
+  }
   for (int i = 0; i < nightSky.length; i++)
   {
     nightSky[i] = new Stars();
@@ -21,6 +26,12 @@ public void draw()
   }
   ship.show();
   ship.move();
+  for (int i = 0; i<rock.length; i++)
+  {
+    rock[i].show();
+    rock[i].move();
+    rock[i].accelerate(.1);
+  }
 }
 public void keyPressed()
   {
