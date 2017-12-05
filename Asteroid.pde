@@ -3,16 +3,27 @@ class Asteroid extends Floater
   public Asteroid()
   {
   corners = 6;  
-  int[] xS = {2,-3,1,2,-6,-3,4,5};   
-  int[] yS = {-4,5,5,6,4,2,-4,-5};  
+  int[] xS = {-11,7,13,6,-11,-5};   
+  int[] yS = {-8,-8,0,10,8,0};  
   xCorners = xS;
   yCorners = yS;
   myColor = 100;   
   myCenterX = (int)(Math.random()*500);
   myCenterY = (int)(Math.random()*500); 
   myDirectionX = myDirectionY=0; 
-  myPointDirection=10;
-  myRotatingSpeed = (int)(Math.random()*41-20);
+  myPointDirection=0;
+  myRotatingSpeed = (int)(Math.random()*21-10);
+  }
+  public boolean collide (int x, int y)
+  {
+    if (dist((int)myCenterX, (int)myCenterY, x, y) <=20)
+    {
+      return true;
+    }
+    else 
+    {
+      return false;
+    }
   }
   public void move()
   {

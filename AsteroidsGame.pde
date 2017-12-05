@@ -1,14 +1,20 @@
 Spaceship ship; //your variable declarations here
-Asteroid [] rock = new Asteroid [25];
+//Asteroid [] rock = new Asteroid [25];
+ArrayList <Asteroid> rock;
 Stars [] nightSky = new Stars [200];
 public void setup() 
 {
   //your code here
   size (500,500);
   ship = new Spaceship();
-  for (int i = 0; i < rock.length; i++)
+  rock = new ArrayList <Asteroid>();
+  //for (int i = 0; i < rock.length; i++)
+  //{
+  //  rock[i] = new Asteroid();
+  //}
+  for(int i = 0; i<10; i++)
   {
-    rock[i] = new Asteroid();
+    rock.add(i,new Asteroid());
   }
   for (int i = 0; i < nightSky.length; i++)
   {
@@ -26,12 +32,24 @@ public void draw()
   }
   ship.show();
   ship.move();
-  for (int i = 0; i<rock.length; i++)
+  //for (int i = 0; i<rock.length; i++)
+  //{
+  //  rock[i].show();
+  //  rock[i].move();
+  //  rock[i].accelerate(.1);
+  //}
+  for (int i = 0; i<rock.size(); i++)
   {
-    rock[i].show();
-    rock[i].move();
-    rock[i].accelerate(.1);
+    rock.get(i).show();
+    rock.get(i).move();
+    rock.get(i).accelerate(.01);
+    if (rock.get(i).collide(ship.getX(), ship.getY())==true)
+    {
+      rock.remove(i);
+      //System.out.println("Crash");
+    }
   }
+  
 }
 public void keyPressed()
   {
