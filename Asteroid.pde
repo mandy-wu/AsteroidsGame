@@ -17,9 +17,7 @@ class Asteroid extends Floater
   public boolean collide (int x, int y)
   {
     if (dist((int)myCenterX, (int)myCenterY, x, y) <=20)
-    {
       return true;
-    }
     else 
     {
       return false;
@@ -27,7 +25,7 @@ class Asteroid extends Floater
   }
   public void move()
   {
-    turn(myRotatingSpeed);
+    super.turn(myRotatingSpeed);
     super.move();
   }
   public void setX(int x){myCenterX = x;}  

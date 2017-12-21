@@ -1,20 +1,23 @@
 Spaceship ship; //your variable declarations here
 //Asteroid [] rock = new Asteroid [25];
 ArrayList <Asteroid> rock;
+ArrayList <Bullet> bullets;
 Stars [] nightSky = new Stars [200];
+
 public void setup() 
 {
   //your code here
-  size (500,500);
+  size (500, 500);
   ship = new Spaceship();
+  bullets = new ArrayList <Bullet>();
   rock = new ArrayList <Asteroid>();
   //for (int i = 0; i < rock.length; i++)
   //{
   //  rock[i] = new Asteroid();
   //}
-  for(int i = 0; i<10; i++)
+  for (int i = 0; i<10; i++)
   {
-    rock.add(i,new Asteroid());
+    rock.add(i, new Asteroid());
   }
   for (int i = 0; i < nightSky.length; i++)
   {
@@ -49,32 +52,50 @@ public void draw()
       //System.out.println("Crash");
     }
   }
-  
-}
-public void keyPressed()
+  for (int i = 0; i<bullets.size(); i++)
   {
-    if (key == 'a')
+    bullets.get(i).show();
+    bullets.get(i).move();
+    for (int a = 0; a<rock.size(); a++)
     {
-      ship.turn(-15);
+      if (bullets.get(i).collide(rock.get(a).getX(), rock.get(a).getY()) == true)
+      {
+        bullets.remove(i);
+        rock.remove(a);
+        break;
+      }
     }
-    if (key == 'd')
-    {
-      ship.turn (15);
-    }
-    if (key == 'w')
-    {
-      ship.accelerate(2);
-    }
-    if (key == 's')
-    {
-      ship.accelerate(-2);
-    }
-    if (key == ' ' )
-    {
-      ship.setX((int)(Math.random()*500));
-      ship.setY((int)(Math.random()*500));
-      ship.setPointDirection((int)(Math.random()*360));
-      ship.setDirectionX(0);
-      ship.setDirectionY(0);
-    }
+  }
+}
+
+public void keyPressed()
+{
+  if (key == 'a')
+  {
+    ship.turn(-15);
+  }
+  if (key == 'd')
+  {
+    ship.turn (15);
+  }
+  if (key == 'w')
+  {
+    ship.accelerate(2);
+  }
+  if (key == 's')
+  {
+    ship.accelerate(-2);
+  }
+  if (key == 'j' )
+  {
+    ship.setX((int)(Math.random()*500));
+    ship.setY((int)(Math.random()*500));
+    ship.setPointDirection((int)(Math.random()*360));
+    ship.setDirectionX(0);
+    ship.setDirectionY(0);
+  }
+  if (key == ' ')
+  {
+    bullets.add(new Bullet(ship));
+  }
 }
